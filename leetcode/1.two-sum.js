@@ -33,5 +33,19 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    
+    //  using an array instead of using map
+    let map = {};
+    let ret = [];
+
+    for (let i = 0; i < nums.length; i++) {
+        if (map.hasOwnProperty(target - nums[i])) {
+            ret.push(map[target - nums[i]]);
+            ret.push(i);
+
+            return ret;
+        }
+        map[nums[i]] = i;
+    }
+
+    return ret;
 };
