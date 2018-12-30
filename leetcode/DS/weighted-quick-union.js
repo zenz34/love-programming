@@ -1,8 +1,13 @@
-class QuickUnionDS {
+class WeightedQuickUnionDS {
     constructor(n) {
         this.id = [];
         for (let i = 0; i < n; i++) {
             this.id[i] = i;
+        }
+
+        this.size = [];
+        for (let i = 0; i < n; i++) {
+            this.size[i] = 1;
         }
     }
 
@@ -22,11 +27,20 @@ class QuickUnionDS {
             return;
         }
 
-        this.id[this.find(p)] = this.find(q);
+        const pId = this.find(p);
+        const qId = this.find(q);
+
+        if (this.size[pId] < this.size[qId]) {
+            this.id[pId] = this.id[qId];
+            this.size[qId] += this.size[pId];
+        } else {
+            this.id[qId] = this.id[pId];
+            this.size[pId] += this.size[qId];
+        }
     }
 }
 
-const qf = new QuickUnionDS(5);
+const qf = new WeightedQuickUnionDS(5);
 qf.connect(
     0,
     1
