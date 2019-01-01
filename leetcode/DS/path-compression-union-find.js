@@ -12,10 +12,10 @@ class PathCompressedQuickUnionDS {
     }
 
     find(p) {
-        while (p !== this.id[p]) {
-            p = this.id[p];
+        if (p !== this.id[p]) {
+            this.id[p] = this.find(this.id[p]);
         }
-        return p;
+        return this.id[p];
     }
 
     isConnected(p, q) {
