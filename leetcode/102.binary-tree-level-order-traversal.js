@@ -38,3 +38,23 @@ var levelOrder = function(root) {
 
     return ans;
 };
+
+/*
+0 建立queue 将root节点放入queue
+1 获取queue的length 如果len不等于0
+2 for循环将len个节点依次从queue弹出 
+    每个节点弹出的同时 将它的左右子节点加入queue
+    将此节点的值加入临时array
+    循环结束后 push临时array进入ans array
+    开始下一轮循环直到len为0
+
+
+总结
+1个queue
+1个临时array
+一个while loop
+一个for循环
+两者都用到queue当前的size
+
+*/
+P
