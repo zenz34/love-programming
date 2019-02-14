@@ -52,17 +52,17 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-    if( !s.length ) return 0;
-    if( s.length === 1 ) return 1;
-    let max = 0;
-    let now = "";
-    for (let c of s) {
-        let i = now.indexOf(c);
-        if (i > -1) {
-            max = Math.max(max, now.length);
-            now = now.substring(i+1,now.length)
-        }
-        now += c;
+    let n = s.length;
+    let ans = 0;
+    let index = new Array(128);
+    index.fill(0);
+    for (let i = 0, j = 0; j < n; j++) {
+        i = Math.max(index[s.charAt(j).charCodeAt(0)], i);
+        ans = Math.max(ans, j - i + 1);
+        index[s.charAt(j).charCodeAt(0)] = j + 1;
     }
-    return max < now.length ? now.length : max;
+
+    return ans;
 };
+
+// console.log(lengthOfLongestSubstring('pwwkew'));
