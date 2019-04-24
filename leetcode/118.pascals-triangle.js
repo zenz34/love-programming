@@ -38,17 +38,26 @@
  * @return {number[][]}
  */
 var generate = function(numRows) {
-    let ans = [];
-    for (let i = 0; i < numRows; i++) {
-        ans[i] = new Array(i + 1);
+    const arr = new Array(numRows);
+
+    pascalsTriangle(0, numRows, arr);
+
+    return arr;
+
+    function pascalsTriangle(i, n, arr) {
+        if (i === n) {
+            return;
+        }
+
+        arr[i] = [];
         for (let j = 0; j < i + 1; j++) {
-            if (j === 0 || j === i) {
-                ans[i][j] = 1;
+            if (0 === j || i === j) {
+                arr[i][j] = 1;
             } else {
-                ans[i][j] = ans[i - 1][j - 1] + ans[i - 1][j];
+                arr[i][j] = arr[i - 1][j] + arr[i - 1][ j - 1];
             }
         }
-    }
 
-    return ans;
+        pascalsTriangle(i + 1, n, arr);
+    }
 };
