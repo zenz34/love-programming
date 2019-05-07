@@ -57,4 +57,3 @@ var levelOrder = function(root) {
 两者都用到queue当前的size
 
 */
-P
