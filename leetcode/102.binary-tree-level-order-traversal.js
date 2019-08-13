@@ -1,3 +1,8 @@
+/*
+ * @lc app=leetcode id=102 lang=javascript
+ *
+ * [102] Binary Tree Level Order Traversal
+ */
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -10,51 +15,29 @@
  * @return {number[][]}
  */
 var levelOrder = function(root) {
-    let queue = [];
-    let ans = [];
+  const queue = [];
+  const nodes = [];
 
-    if (!root) {
-        return ans;
-    }
-
+  if (root) {
     queue.push(root);
-    while (queue.length > 0) {
-        const size = queue.length;
-        const curLevel = [];
-        for (let i = 0; i < size; i++) {
-            const root = queue.shift();
+  }
 
-            if (root.left) {
-                queue.push(root.left);
-            }
-            if (root.right) {
-                queue.push(root.right);
-            }
-            curLevel.push(root.val);
-        }
-
-        ans.push(curLevel);
+  while (queue.length !== 0) {
+    const size = queue.length;
+    const level = [];
+    for (let i = 0; i < size; i++) {
+      const node = queue.shift();
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+      level.push(node.val);
     }
 
-    return ans;
+    nodes.push(level);
+  }
+
+  return nodes;
 };
-
-/*
-0 建立queue 将root节点放入queue
-1 获取queue的length 如果len不等于0
-2 for循环将len个节点依次从queue弹出 
-    每个节点弹出的同时 将它的左右子节点加入queue
-    将此节点的值加入临时array
-    循环结束后 push临时array进入ans array
-    开始下一轮循环直到len为0
-
-
-总结
-1个queue
-1个临时array
-一个while loop
-一个for循环
-两者都用到queue当前的size
-
-*/
-P
