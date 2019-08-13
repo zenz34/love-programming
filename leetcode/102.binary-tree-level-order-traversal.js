@@ -39,5 +39,12 @@ var levelOrder = function(root) {
     nodes.push(level);
   }
 
-  return nodes;
-};
+/*
+总结
+1个queue
+1个临时array
+一个while loop
+一个for循环
+两者都用到queue当前的size
+
+*/
