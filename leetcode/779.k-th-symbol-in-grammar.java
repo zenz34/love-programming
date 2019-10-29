@@ -11,11 +11,7 @@ class Solution {
             return 0;
         }
 
-        if (K % 2 == 0) {
-            return 1 - kthGrammar(N - 1, K / 2);
-        } else {
-            return kthGrammar(N - 1, (K + 1) / 2);
-        }
+        return ((K + 1)% 2) ^ kthGrammar(N - 1, (K + 1) / 2);
     }
 }
 // @lc code=end
