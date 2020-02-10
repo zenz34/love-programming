@@ -6,13 +6,43 @@
 
 // @lc code=start
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * end to end product search page : React components, filters, ui-guild not ok
+ * Mobile, Hamburg components responsive design
+ * 
+ * work flow parsing data key + value
+ * 
+ * request API k + v
+ * 
+ * 
+ * 
+ * 
+ * 
+ * update password forget password re-direct, rule changes on email, password
+ * 
+ * production description page new product calendar start, end component
+ * personalized storybook work flow on Node.js
+ * 
+ * 
+ * 
+ * Kroger
+ * bloomreach
+ * 
+ * 
  */
 class Solution {
     public int maxDepth(TreeNode root) {
@@ -24,18 +54,19 @@ class Solution {
             return 1;
         }
 
-        int max = 0;
+        int left = Integer.MIN_VALUE;
 
         if (root.left != null) {
-            max = Math.max(maxDepth(root.left), max);
+            left = Math.max(left, maxDepth(root.left));
         }
+
+        int right = Integer.MIN_VALUE;
 
         if (root.right != null) {
-            max = Math.max(maxDepth(root.right), max);
+            right = Math.max(right, maxDepth(root.right));
         }
 
-        return max + 1;
+        return Math.max(left, right) + 1;
     }
 }
 // @lc code=end
-
